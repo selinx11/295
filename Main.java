@@ -17,8 +17,9 @@ public class Main {
     private static Admin currentAdmin = null;
 
     public static void main(String[] args) {
+        initializeData();
         try {
-            initializeData();
+           ;
             showMainMenu();
         } catch (Exception e) {
             System.out.println("Unexpected error: " + e.getMessage());
@@ -30,7 +31,8 @@ public class Main {
     private static void initializeData() {
         admins.add(new Admin("A1", "idil", "idil123"));
         admins.add(new Admin("A2", "selin", "selin123"));
-        users.add(new User("U1", "Mehmet", "mehmet@gmail.com", "mehmet123"));
+        admins.add(new Admin("A3", "aysegul ozkaya eren", "aysegulozkaya"));
+        users.add(new User("U1", "pelin erkaya", "pelinerkaya@gmail.com", "pelin123"));
     }
 
     private static void showMainMenu() {
@@ -282,9 +284,9 @@ public class Main {
         System.out.print("Enter event date/time (yyyy-MM-dd HH:mm): ");
         String dateInput = scanner.nextLine();
         LocalDateTime eventDate;
-        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        DateTimeFormatter beauTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         try {
-            eventDate = LocalDateTime.parse(dateInput, fmt);
+            eventDate = LocalDateTime.parse(dateInput, beauTimeFormatter);
         } catch (DateTimeParseException e) {
             System.out.println("Invalid format: expected yyyy-MM-dd HH:mm");
             eventDate = LocalDateTime.now();
@@ -327,9 +329,11 @@ public class Main {
                     String playName = scanner.nextLine();
                     System.out.print("Enter playwright: ");
                     String playwright = scanner.nextLine();
+                    System.out.print("Enter Type of Theater: ");
+                    String theaterType = scanner.nextLine();
                     event = new Theater("E" + (events.size() + 1), title, eventId,
                             eventDate, venue, basePrice, duration, 1, seats,
-                            playName, playwright, "Classical");
+                            playName, playwright, theaterType);
                     break;
                 case 4:
                     System.out.print("Enter exhibition name: ");
@@ -442,4 +446,3 @@ public class Main {
         System.out.println(found ? "Ticket cancelled successfully!" : "Invalid Ticket ID or ticket not found.");
     }
 }
-
