@@ -66,6 +66,7 @@ src/
 ├── Venue.java                # Venue details & capacity
 ├── Seat.java                 # Seat model & booking flag
 └── Ticket.java               # Links User, Event, and Seat
+```
 
 ## Getting Started
 
